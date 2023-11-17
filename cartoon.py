@@ -64,7 +64,7 @@ def cartoonization(img, cartoon):
     
     else:
         
-    return cartoon
+return cartoon
 
 
 # 设置标题
