@@ -8,7 +8,7 @@ def cartoonization(img, cartoon):
     # 将图片转化为灰度图像
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-    elif cartoon == "铅笔":
+    if cartoon == "铅笔":
         # 使用st.sidebar.slider函数创建滑块部件，取值范围1-21，初始值3，步长为2
         kernel = st.sidebar.slider('调整图像清晰度(数值越低，清晰度越高)', 1, 21, 3, step=2)
         laplacian_filter = st.sidebar.slider('调整边缘检测功率(数值越高，功率越强)', 3, 9, 5, step=2)
@@ -61,6 +61,9 @@ def cartoonization(img, cartoon):
         # 使用bitwise_and函数进行按位与运算，得到一个新的图像cartoon。
         cartoon = np.zeros(gray2.shape)
         cartoon = cv2.bitwise_and(edgePreservingImage, edgePreservingImage, mask=edges)
+    
+    else:
+        
 
     return cartoon
 
