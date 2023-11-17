@@ -8,7 +8,7 @@ def cartoonization(img, cartoon):
     # 将图片转化为灰度图像
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-    if cartoon == "qianbi":
+    elif cartoon == "铅笔":
         # 使用st.sidebar.slider函数创建滑块部件，取值范围1-21，初始值3，步长为2
         kernel = st.sidebar.slider('调整图像清晰度(数值越低，清晰度越高)', 1, 21, 3, step=2)
         laplacian_filter = st.sidebar.slider('调整边缘检测功率(数值越高，功率越强)', 3, 9, 5, step=2)
@@ -21,7 +21,7 @@ def cartoonization(img, cartoon):
         # 使用threshold函数进行二值化处理
         dummy, cartoon1 = cv2.threshold(edges_inv, 150, 255, cv2.THRESH_BINARY)
 
-    elif cartoon == "sumiao":
+    elif cartoon == "素描":
         value = st.sidebar.slider('调整图像亮度(数值越高，图像越亮)', 150.0, 300.0, 250.0)
         kernel = st.sidebar.slider('调整图像边缘的粗细(数值越高，边缘越粗)', 1, 120, 55, step=2)
         # 使用GaussianBlur进行高斯模糊处理
@@ -77,7 +77,7 @@ else:
     image = Image.open(file)
     img = np.array(image)
 
-    option = st.sidebar.selectbox('请选择需要的滤镜：', ('qianbi', 'sumiao', '细节增强', '卡通'))
+    option = st.sidebar.selectbox('请选择需要的滤镜：', ('铅笔', '素描', '细节增强', '卡通'))
 
     st.text("原图展示：")
     st.image(image, use_column_width=True)
