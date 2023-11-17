@@ -91,4 +91,4 @@ if anjian3:
 else:
     st.write(' ')
 # 延时函数
-cv2.waitKey(0)
+# cv2.waitKey(0)
