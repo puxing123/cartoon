@@ -59,10 +59,10 @@ color = cv2.detailEnhance(img, sigma_s=5, sigma_r=0.5)
 # 代码使用bitwise_and函数进行按位与运算，得到一个新的图像cartoon2。
 cartoon2 = cv2.bitwise_and(color, color, mask=edges2)
 # 创建复选框部件
-anjian2 = st.checkbox('卡通化')
+anjian2 = st.checkbox('细节增强')
 # 检查用户是否选择了该选项
 if anjian2:
-    st.write("卡通化：")
+    st.write("细节增强：")
     # st.image在网页中显示
     st.image(cartoon2, channels="BGR")
 else:
@@ -82,10 +82,10 @@ edgePreservingImage = cv2.edgePreservingFilter(img, flags=2, sigma_s=50, sigma_r
 output = np.zeros(gray3.shape)
 output = cv2.bitwise_and(edgePreservingImage, edgePreservingImage, mask=edges3)
 # 创建复选框部件
-anjian3 = st.checkbox('卡通化2')
+anjian3 = st.checkbox('卡通化')
 # 检查用户是否选择了该选项
 if anjian3:
-    st.write("卡通化2：")
+    st.write("卡通化：")
     # st.image在网页中显示
     st.image(output, channels="BGR")
 else:
