@@ -13,9 +13,9 @@ def cartoonization(img, cartoon):
         kernel = st.sidebar.slider('调整图像清晰度(数值越低，清晰度越高)', 1, 21, 3, step=2)
         laplacian_filter = st.sidebar.slider('调整边缘检测功率(数值越高，功率越强)', 3, 9, 5, step=2)
         # 使用medianBlur函数对图像进行中值滤波处理
-        gray1 = cv2.medianBlur(gray, kernel)
+        gray = cv2.medianBlur(gray, kernel)
         # 使用拉普拉斯边缘检测
-        edges = cv2.Laplacian(gray1, -1, ksize=laplacian_filter)
+        edges = cv2.Laplacian(gray, -1, ksize=laplacian_filter)
         # 反色处理
         edges_inv = 255 - edges
         # 使用threshold函数进行二值化处理
