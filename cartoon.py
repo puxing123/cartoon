@@ -8,15 +8,7 @@ def cartoonization(img, cartoon):
     # 将图片转化为灰度图像
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-    if cartoon == "素描":
-        value = st.sidebar.slider('调整图像亮度(数值越高，图像越亮)', 150.0, 300.0, 250.0)
-        kernel = st.sidebar.slider('调整图像边缘的粗细(数值越高，边缘越粗)', 1, 120, 55, step=2)
-        # 使用GaussianBlur进行高斯模糊处理
-        gray_blur = cv2.GaussianBlur(gray, (kernel, kernel), 0)
-        # 使用divide函数进行除法运算，参数scale=250.0用于控制素描效果的强度。
-        cartoon = cv2.divide(gray, gray_blur, scale=value)
-
-    elif cartoon == "铅笔":
+    if cartoon == "铅笔":
         kernel = st.sidebar.slider('调整图像清晰度(数值越低，清晰度越高)', 1, 21, 3, step=2)
         # 使用st.sidebar.slider函数创建滑块部件，取值范围1-21，初始值3，步长为2
         laplacian_filter = st.sidebar.slider('调整边缘检测功率(数值越高，功率越强)', 3, 9, 5, step=2)
@@ -29,6 +21,14 @@ def cartoonization(img, cartoon):
         # 使用threshold函数进行二值化处理
         dummy, cartoon1 = cv2.threshold(edges_inv, 150, 255, cv2.THRESH_BINARY)
         
+    elif cartoon == "素描":
+        value = st.sidebar.slider('调整图像亮度(数值越高，图像越亮)', 150.0, 300.0, 250.0)
+        kernel = st.sidebar.slider('调整图像边缘的粗细(数值越高，边缘越粗)', 1, 120, 55, step=2)
+        # 使用GaussianBlur进行高斯模糊处理
+        gray_blur = cv2.GaussianBlur(gray, (kernel, kernel), 0)
+        # 使用divide函数进行除法运算，参数scale=250.0用于控制素描效果的强度。
+        cartoon = cv2.divide(gray, gray_blur, scale=value)
+
     elif cartoon == "细节增强":
         smooth = st.sidebar.slider('调整图像的平滑程度(数值越高，图像越平滑)', 3, 9, 5, step=2)
         kernel = st.sidebar.slider('调整图像的清晰度(数值越低，清晰度越高)', 1, 21, 3, step=2)
