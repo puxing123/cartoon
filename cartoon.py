@@ -19,7 +19,7 @@ def cartoonization(img, cartoon):
         # 反色处理
         edges_inv = 255 - edges
         # 使用threshold函数进行二值化处理
-        dummy, cartoon1 = cv2.threshold(edges_inv, 150, 255, cv2.THRESH_BINARY)
+        dummy, cartoon = cv2.threshold(edges_inv, 150, 255, cv2.THRESH_BINARY)
         
     elif cartoon == "素描":
         value = st.sidebar.slider('调整图像亮度(数值越高，图像越亮)', 150.0, 300.0, 250.0)
