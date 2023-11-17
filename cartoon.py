@@ -83,5 +83,5 @@ else:
     st.image(image, use_column_width=True)
 
     st.text("卡通形象展示：")
-    cartoon = cartoonization(img, option)
-    st.image(cartoon, use_column_width=True)
+    katong = cartoonization(img, option)
+    st.image(katong, use_column_width=True)
