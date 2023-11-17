@@ -75,7 +75,7 @@ if file is None:
     st.text("还没有上传图像")
 else:
     image = Image.open(file)
-    img = np.array(image)
+    img = np.array(Image)
 
     option = st.sidebar.selectbox('请选择需要的滤镜：', ('铅笔', '素描', '细节增强', '卡通'))
 
@@ -83,5 +83,5 @@ else:
     st.image(image, use_column_width=True)
 
     st.text("卡通形象展示：")
-    katong = cartoonization(img, option)
-    st.image(katong, use_column_width=True)
+    cartoon = cartoonization(img, option)
+    st.image(cartoon, use_column_width=True)
