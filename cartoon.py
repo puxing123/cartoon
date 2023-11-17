@@ -62,9 +62,8 @@ def cartoonization(img, cartoon):
         cartoon = np.zeros(gray2.shape)
         cartoon = cv2.bitwise_and(edgePreservingImage, edgePreservingImage, mask=edges)
     
-    else:
+    else
         
-
     return cartoon
 
 
