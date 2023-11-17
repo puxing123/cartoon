@@ -77,7 +77,7 @@ else:
     image = Image.open(file)
     img = np.array(image)
 
-    option = st.sidebar.selectbox('请选择需要的滤镜：', ( '铅笔', '素描',  '细节增强', '卡通'))
+    option = st.sidebar.selectbox('请选择需要的滤镜：', ('铅笔', '素描',  '细节增强', '卡通'))
 
     st.text("原图展示：")
     st.image(image, use_column_width=True)
