@@ -84,5 +84,4 @@ else:
 
     st.text("卡通形象展示：")
     cartoon = cartoonization(img, option)
-
     st.image(cartoon, use_column_width=True)
