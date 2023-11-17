@@ -63,8 +63,9 @@ def cartoonization(img, cartoon):
         cartoon = cv2.bitwise_and(edgePreservingImage, edgePreservingImage, mask=edges)
     
     else:
+        cartoon = img
         
-return cartoon
+    return cartoon
 
 
 # 设置标题
