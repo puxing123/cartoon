@@ -21,7 +21,7 @@ def cartoonization(img, cartoon):
         # 使用threshold函数进行二值化处理
         dummy, cartoon1 = cv2.threshold(edges_inv, 150, 255, cv2.THRESH_BINARY)
 
-    if cartoon == "素描":
+    elif cartoon == "素描":
         value = st.sidebar.slider('调整图像亮度(数值越高，图像越亮)', 150.0, 300.0, 250.0)
         kernel = st.sidebar.slider('调整图像边缘的粗细(数值越高，边缘越粗)', 1, 120, 55, step=2)
         # 使用GaussianBlur进行高斯模糊处理
@@ -29,7 +29,7 @@ def cartoonization(img, cartoon):
         # 使用divide函数进行除法运算，参数scale=250.0用于控制素描效果的强度。
         cartoon = cv2.divide(gray, gray_blur, scale=value)
 
-    if cartoon == "细节增强":
+    elif cartoon == "细节增强":
         smooth = st.sidebar.slider('调整图像的平滑程度(数值越高，图像越平滑)', 3, 9, 5, step=2)
         kernel = st.sidebar.slider('调整图像的清晰度(数值越低，清晰度越高)', 1, 21, 3, step=2)
         edge_preserve = st.sidebar.slider('调整颜色平均效果(低：相似颜色会被平滑；高：不同颜色会被平滑)', 0.0, 1.0, 0.5)
@@ -42,7 +42,7 @@ def cartoonization(img, cartoon):
         # 代码使用bitwise_and函数进行按位与运算，得到一个新的图像cartoon。
         cartoon = cv2.bitwise_and(color, color, mask=edges)
 
-    if cartoon == "卡通":
+    elif cartoon == "卡通":
         # smooth = st.sidebar.slider('调整图像平滑程度(数值越高，图像越平滑)', 3, 99, 5, step=2)
         laplacian_filter = st.sidebar.slider('调整边缘检测功率(数值越高，功率越强)', 3, 9, 5, step=2)
         kernel = st.sidebar.slider('调整图像清晰度(数值越低，清晰度越高)', 1, 9, 3, step=2)
